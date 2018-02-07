@@ -1,10 +1,10 @@
 import React from 'react'
-import './Screen.css'
+import styled from 'styled-components'
 
 export default ({ pin }) => {
 
   const num = 4;
-  let maskedPin;
+  let maskedPin; 
 
   if(pin.length < 4) {
     let emptySpace = Array(num - pin.length).fill('');
@@ -14,18 +14,47 @@ export default ({ pin }) => {
   }
 
   if(pin.length > 1 && isNaN(parseFloat(pin))) {
-    maskedPin = <p className="pin">{pin}</p>
+    maskedPin = <PinNumber>{pin}</PinNumber>
   } else {
     maskedPin = maskedPin.map((item, i) => {
-      return i === pin.length - 1 ? <p key={i} className="pin">{ item }</p> : 
-        item === '' ? <div key={i} className="pin-circle" /> : 
-        <div key={i} className="pin-circle pin-circle-complete" />
+      return i === pin.length - 1 ? <PinNumber key={i}>{ item }</PinNumber> : 
+        item === '' ? <PinCircle key={i} /> : 
+        <PinCircleComplete key={i} />
     })
   }
 
   return (
-    <div className="screen">
-        { maskedPin }
-    </div>
+    <ScreenContainer>
+      { maskedPin }
+    </ScreenContainer>
   )
 }
+
+const ScreenContainer = styled.section`
+  justify-content: center;
+  height: 50px;
+  display: flex;
+`;
+
+const PinNumber = styled.p`
+  color: #fff;
+  font-size: 26px;
+  margin: 0 10px;
+`;
+
+const PinCircle = styled.div`
+  height: 10px;
+  width: 10px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  margin: 10px;
+`;
+
+const PinCircleComplete = styled.div`
+  height: 10px;
+  width: 10px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  margin: 10px;
+  background: #fff;
+`;

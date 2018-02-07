@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Button.css'
+import styled, { keyframes } from 'styled-components'
 
 export default class extends Component {
 
@@ -19,19 +19,53 @@ export default class extends Component {
       this.setState({
         active: false
       })
-    }, 1000);
+    }, 500);
   }
 
   render() {
+
     return (
-      <div 
-        className={ this.state.active ? "button active" : "button" }
+      <Button 
+        active={this.state.active}
         onClick={ this.pressNumber }
-        onTouchEnd={ this.pressNumber }
       >
-          <p className="number">{ this.props.number }</p>
-      </div>
+        <Number>{ this.props.number }</Number>
+      </Button>
     )
   }
 
 }
+
+const Button = styled.div`
+  border: 1px solid #fff;
+  background: transparent;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  cursor: pointer;
+  outline: none;
+  animation-duration: 0.5s;
+  animation-name: ${props => props.active ? highlightButton : 'none'};
+`
+
+const Number = styled.div`
+  color: #fff;
+  font-size: 26px;
+  font-weight: 300;
+`
+
+const highlightButton = keyframes`
+  0%   {
+    background-color: transparent;
+  }
+  50%  {
+    background-color: #fff;
+  }
+  100%  {
+    background-color: transparent;
+  }
+`
