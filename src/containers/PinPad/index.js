@@ -13,11 +13,19 @@ class PinPad extends Component {
 
   updatePin = (number) => {
 
-  this.setState(prevState => {
-    return {
-      pin: prevState.pin += number
+    const { pin } = this.state;
+
+    if(pin === 'LOCKED' ||
+      pin === 'INCORRECT' ||
+      pin === 'OK') {
+      return;
     }
-  }, this.checkPin)
+
+    this.setState(prevState => {
+      return {
+        pin: prevState.pin += number
+      }
+    }, this.checkPin)
 
   }
 
@@ -42,25 +50,27 @@ class PinPad extends Component {
     }
 
     if(pin === correctPin) {
-      this.setState({
-        pin: 'OK',
-        incorrectAttempts: 0
-      }, () => this.clearPin(500))
+      this.handleScreenOutput('OK', 500)
     }
 
   }
 
-  lockScreen() {
+  handleScreenOutput(message, time) {
     this.setState({
-      pin: 'LOCKED'
-    }, () => this.clearPin(30000))
+      pin: message
+    }, () => this.clearPin(time))
+  }
+
+  lockScreen() {
+    this.handleScreenOutput('LOCKED', 3000)
   }
 
   clearPin(time) {
 
     setTimeout(() => {
       this.setState({
-        pin: ''
+        pin: '',
+        incorrectAttempts: 0
       })
     }, time)
 

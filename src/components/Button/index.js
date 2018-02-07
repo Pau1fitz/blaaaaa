@@ -33,7 +33,7 @@ export default class extends Component {
       </Button>
     )
   }
-  
+
 }
 
 const Button = styled.div`
@@ -56,6 +56,10 @@ const Number = styled.div`
   color: #fff;
   font-size: 26px;
   font-weight: 300;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; 
 `
 
 const highlightButton = keyframes`
