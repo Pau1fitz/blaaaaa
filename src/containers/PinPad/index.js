@@ -41,7 +41,7 @@ class PinPad extends Component {
  
     }
 
-    if(!pin.includes('-') && pin === correctPin) {
+    if(pin === correctPin) {
       this.setState({
         pin: 'OK',
         incorrectAttempts: 0

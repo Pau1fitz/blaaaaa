@@ -33,7 +33,7 @@ export default class extends Component {
       </Button>
     )
   }
-
+  
 }
 
 const Button = styled.div`
