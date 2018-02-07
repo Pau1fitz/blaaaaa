@@ -13,7 +13,7 @@ class PinPad extends Component {
 
   updatePin = (number) => {
 
-    const { pin } = this.state;
+    const { pin } = this.state
 
     if(pin === 'LOCKED' ||
       pin === 'INCORRECT' ||
