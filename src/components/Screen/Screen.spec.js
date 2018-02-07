@@ -1,19 +1,18 @@
-import { expect } from 'chai';
-import { shallow } from 'enzyme';
-import React from 'react';
-
-import Screen from './index';
+import { expect } from 'chai'
+import { shallow } from 'enzyme'
+import React from 'react'
+import Screen from './index'
 
 describe('Screen', () => {
 
-  let wrapper;
+  let wrapper
 
   beforeEach(() => {
-    wrapper = shallow(<Screen pin='' />);
+    wrapper = shallow(<Screen pin='' />)
   })
 
   it('Screen should render', () => {
-    expect(wrapper).to.have.length(1);
-  });
+    expect(wrapper).to.have.length(1)
+  })
 
-});
+})
