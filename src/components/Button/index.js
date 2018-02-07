@@ -19,7 +19,7 @@ export default class extends Component {
       this.setState({
         active: false
       })
-    }, 500);
+    }, 500)
   }
 
   render() {

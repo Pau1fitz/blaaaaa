@@ -8,7 +8,7 @@ export default ({ pin }) => {
 
   if(pin.length < 4) {
     let emptySpace = Array(num - pin.length).fill('');
-    maskedPin = [...pin.split(''), ...emptySpace];
+    maskedPin = [...pin.split(''), ...emptySpace]
   } else {
     maskedPin = [...pin.split('')]
   }
