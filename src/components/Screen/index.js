@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
-export default ({ pin }) => {
+const Screen = ({ pin }) => {
 
   const num = 4;
   let maskedPin; 
@@ -28,6 +29,10 @@ export default ({ pin }) => {
       { maskedPin }
     </ScreenContainer>
   )
+}
+
+Screen.propTypes = {
+  pin: PropTypes.string
 }
 
 const ScreenContainer = styled.section`
@@ -58,3 +63,5 @@ const PinCircleComplete = styled.div`
   margin: 10px;
   background: #fff;
 `;
+
+export default Screen;
