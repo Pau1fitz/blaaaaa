@@ -11,7 +11,7 @@ describe('Screen', () => {
   wrapper = shallow(<Screen pin={ '1234' } />)
   })
 
-  it('Screen should render', () => {
+  it('should render', () => {
     expect(wrapper).to.have.length(1)
   })
 

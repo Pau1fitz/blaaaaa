@@ -25,7 +25,7 @@ const Screen = ({ pin }) => {
   }
 
   return (
-    <ScreenContainer>
+    <ScreenContainer id="screen">
       { maskedPin }
     </ScreenContainer>
   )

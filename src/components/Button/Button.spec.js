@@ -20,7 +20,7 @@ describe('Button', () => {
       )
     })
   
-    it('Button should render', () => {
+    it('should render', () => {
       expect(wrapper).to.have.length(1)
     })
   
@@ -44,7 +44,7 @@ describe('Button', () => {
       wrapper.find('div').first().simulate('click')
       expect(updatePinStub.calledOnce).to.be.true
     })
-    
+
   })
 
 
