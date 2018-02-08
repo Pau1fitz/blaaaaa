@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Button from '../../components/Button'
 import Screen from '../../components/Screen'
 import styled from 'styled-components'
@@ -31,7 +31,7 @@ const PinPadView = ({pin, updatePin}) => {
       <PinPadRow>
         <Button updatePin={ updatePin } number={0} />
       </PinPadRow>
-      
+
     </PinPadContainer>
   )
   

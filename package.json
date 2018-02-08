@@ -1,5 +1,6 @@
 {
   "name": "yld",
+  "homepage": "http://pau1fitz.github.io/pinpad",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
