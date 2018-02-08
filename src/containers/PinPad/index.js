@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import Button from '../../components/Button'
-import Screen from '../../components/Screen'
-import styled from 'styled-components'
+import PinPadView from '../../components/PinPadView'
 
 class PinPad extends Component {
 
@@ -15,11 +13,7 @@ class PinPad extends Component {
 
     const { pin } = this.state
 
-    if(pin === 'LOCKED' ||
-      pin === 'INCORRECT' ||
-      pin === 'OK') {
-      return;
-    }
+    if(pin.length > 4) return
 
     this.setState(prevState => {
       return {
@@ -36,8 +30,8 @@ class PinPad extends Component {
     if(pin.length === 4 && pin !== correctPin) {
 
       if(this.state.incorrectAttempts === 2) {
-        this.lockScreen();
-        return;
+        this.lockScreen()
+        return
       }
 
       this.setState(prevState => {
@@ -50,27 +44,27 @@ class PinPad extends Component {
     }
 
     if(pin === correctPin) {
-      this.handleScreenOutput('OK', 500)
+      this.setState({
+        pin: 'OK',
+        incorrectAttempts: 0
+      }, () => this.clearPin(500))
     }
 
   }
 
-  handleScreenOutput(message, time) {
-    this.setState({
-      pin: message
-    }, () => this.clearPin(time))
-  }
-
   lockScreen() {
-    this.handleScreenOutput('LOCKED', 3000)
+
+    this.setState({
+      pin: 'LOCKED'
+    }, () => this.clearPin(3000))
+  
   }
 
   clearPin(time) {
 
     setTimeout(() => {
       this.setState({
-        pin: '',
-        incorrectAttempts: 0
+        pin: ''
       })
     }, time)
 
@@ -79,49 +73,12 @@ class PinPad extends Component {
   render() {
 
     return (
-      <PinPadContainer>
-
-        <Screen pin={this.state.pin} />
-
-        <PinPadRow>
-          <Button updatePin={ this.updatePin } number={1} />
-          <Button updatePin={ this.updatePin } number={2} /> 
-          <Button updatePin={ this.updatePin } number={3} />  
-        </PinPadRow>
-        <PinPadRow>
-          <Button updatePin={ this.updatePin } number={4} />
-          <Button updatePin={ this.updatePin } number={5} /> 
-          <Button updatePin={ this.updatePin } number={6} />  
-        </PinPadRow>
-        <PinPadRow>
-          <Button updatePin={ this.updatePin } number={7} />
-          <Button updatePin={ this.updatePin } number={8} /> 
-          <Button updatePin={ this.updatePin } number={9} />  
-        </PinPadRow>
-        <PinPadRow>
-          <Button updatePin={ this.updatePin } number={0} />
-        </PinPadRow>
-
-      </PinPadContainer>
-
+      <PinPadView 
+        pin={ this.state.pin }
+        updatePin={ this.updatePin } 
+      />
     )
   }
 }
-
-const PinPadContainer = styled.section`
-  background: linear-gradient(to right, #252428 , #414142);
-  -webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.75);
-  max-width: 280px;
-  margin: 0 auto;
-  padding: 30px 15px;
-  border-radius: 5px;
-` 
-
-const PinPadRow = styled.div`
-  display: flex;
-  justify-content: center;
-`
 
 export default PinPad;

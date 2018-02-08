@@ -1,18 +1,30 @@
 import { expect } from 'chai'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import React from 'react'
 import Button from './index'
 
-describe('Footer', () => {
+
+describe('Button', () => {
 
   let wrapper
+  const updatePin = () => {}
 
   beforeEach(() => {
-    wrapper = shallow(<Button />)
+    wrapper = mount(
+      <Button 
+        number={1} 
+        updatePin={ updatePin } 
+      />
+    )
   })
 
   it('Button should render', () => {
     expect(wrapper).to.have.length(1)
+  })
+
+  it('should set the state of the button to active when clicked', () => {
+    wrapper.instance().pressNumber()
+    expect(wrapper.instance().state.active).to.be.true
   })
 
 })

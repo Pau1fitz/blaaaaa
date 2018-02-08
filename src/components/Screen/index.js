@@ -39,6 +39,10 @@ const ScreenContainer = styled.section`
   justify-content: center;
   height: 50px;
   display: flex;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; 
 `;
 
 const PinNumber = styled.p`
