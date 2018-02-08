@@ -8,7 +8,9 @@ describe('Screen', () => {
   let wrapper
 
   beforeEach(() => {
-  wrapper = shallow(<Screen pin={ '1234' } />)
+  wrapper = shallow(
+    <Screen pin={ '1234' } />
+  )
   })
 
   it('should render', () => {

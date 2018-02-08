@@ -14,7 +14,7 @@ describe('Button', () => {
     beforeEach(() => {
       wrapper = shallow(
         <Button 
-          number={3} 
+          number={ 1 } 
           updatePin={ updatePin}  
         />
       )
@@ -37,7 +37,7 @@ describe('Button', () => {
       const updatePinStub = sinon.spy()
       const wrapper = mount(
         <Button 
-          number={3} 
+          number={ 1 } 
           updatePin={ updatePinStub }  
         />     
       )
