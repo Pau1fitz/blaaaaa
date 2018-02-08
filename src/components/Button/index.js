@@ -38,7 +38,8 @@ class Button extends Component {
 }
 
 Button.propTypes = {
-  number: PropTypes.number
+  number: PropTypes.number,
+  updatePin: PropTypes.func
 }
 
 const ButtonContainer = styled.div`
