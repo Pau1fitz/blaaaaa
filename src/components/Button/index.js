@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import styled, { keyframes } from 'styled-components'
+import PropTypes from 'prop-types'
 
-export default class extends Component {
+class Button extends Component {
 
   state = {
     active: false
@@ -25,18 +26,22 @@ export default class extends Component {
   render() {
 
     return (
-      <Button 
+      <ButtonContainer 
         active={this.state.active}
         onClick={ this.pressNumber }
       >
         <Number>{ this.props.number }</Number>
-      </Button>
+      </ButtonContainer>
     )
   }
 
 }
 
-const Button = styled.div`
+Button.propTypes = {
+  number: PropTypes.number
+}
+
+const ButtonContainer = styled.div`
   border: 1px solid #fff;
   background: transparent;
   border-radius: 50%;
@@ -73,3 +78,5 @@ const highlightButton = keyframes`
     background-color: transparent;
   }
 `
+
+export default Button;
