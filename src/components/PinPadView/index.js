@@ -4,7 +4,6 @@ import Screen from '../../components/Screen'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-
 const PinPadView = ({pin, updatePin}) => {
 
   return (
